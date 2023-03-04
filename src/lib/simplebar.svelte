@@ -1,13 +1,18 @@
 <script lang="ts">
 	import type { SimpleBarOptions } from "simplebar-core";
 	import SimpleBar from "simplebar";
-	import { onMount } from "svelte";
+	import { createEventDispatcher, onMount } from "svelte";
+
+	export let options: SimpleBarOptions = {};
 
 	// Export for binding but do not require as a prop
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	export let element: HTMLDivElement = undefined as any;
-	export let options: SimpleBarOptions = {};
-	onMount(() => new SimpleBar(element, options));
+
+	const dispatch = createEventDispatcher<{ mount: { simplebar: SimpleBar } }>();
+	onMount(() => {
+		dispatch("mount", { simplebar: new SimpleBar(element, options) });
+	});
 
 	const style = $$props.style ?? ($$props.class ? undefined : "height:100%");
 </script>

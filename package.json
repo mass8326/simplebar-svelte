@@ -1,49 +1,72 @@
 {
-  "name": "svelte-simplebar",
-  "version": "1.0.3",
-  "description": "simplebar implementation for Svelte 3",
-  "main": "./src/index.js",
-  "repository": "https://github.com/khaninD/svelte-simplebar.git",
-  "author": "Khanin Daniil",
-  "license": "MIT",
-  "scripts": {
-    "start": "rollup --config ./rollup.config.js --format iife",
-    "buildExample": "rollup --config ./rollup.config.js --format iife --input ./example/main.js",
-    "format": "prettier --write --plugin-search-dir=. ./**/*.svelte"
-  },
-  "svelte": "src/MyComponent.svelte",
-  "dependencies": {
-    "@babel/core": "^7.8.4",
-    "@babel/plugin-syntax-dynamic-import": "^7.8.3",
-    "@babel/plugin-transform-runtime": "^7.8.3",
-    "@babel/preset-env": "^7.8.4",
-    "postcss": "^7.0.27",
-    "postcss-comment": "^2.0.0",
-    "postcss-import": "^12.0.1",
-    "postcss-nested": "^4.2.1",
-    "precss": "^4.0.0",
-    "prettier-plugin-svelte": "^0.7.0",
-    "rollup": "^1.31.1",
-    "rollup-plugin-babel": "^4.3.3",
-    "rollup-plugin-commonjs": "^10.1.0",
-    "rollup-plugin-node-resolve": "^5.2.0",
-    "rollup-plugin-replace": "^2.2.0",
-    "rollup-plugin-svelte": "^5.1.1",
-    "simplebar": "^5.1.0",
-    "svelte": "^3.19.0"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "*.{js,json,svelte,html,css,scss}": [
-      "yarn run format",
-      "git add"
-    ]
-  },
-  "devDependencies": {
-    "prettier": "1.19.1"
-  }
+	"name": "@mgnsfr/simplebar-svelte",
+	"version": "0.1.0",
+	"contributors": [
+		"Magnus Reyes <me@magnusreyes.com>",
+		"Khanin Daniil"
+	],
+	"repository": "github:mass8326/simplebar-svelte",
+	"homepage": "https://github.com/mass8326/simplebar-svelte",
+	"bugs": "https://github.com/mass8326/simplebar-svelte/issues",
+	"license": "MIT",
+	"type": "module",
+	"types": "./dist/index.d.ts",
+	"main": "./dist/index.js",
+	"svelte": "./dist/index.js",
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"import": "./dist/index.js",
+			"svelte": "./dist/index.js"
+		}
+	},
+	"files": [
+		"dist"
+	],
+	"scripts": {
+		"dev": "vite dev",
+		"build": "vite build",
+		"preview": "vite preview",
+		"package": "svelte-kit sync && svelte-package && publint",
+		"lint": "eslint --fix . && svelte-kit sync && svelte-check",
+		"prepublishOnly": "pnpm run package"
+	},
+	"peerDependencies": {
+		"svelte": "^3.54.0",
+		"simplebar": "^6.0.0"
+	},
+	"devDependencies": {
+		"@babel/core": "^7.21.0",
+		"@mgnsfr/eslint-config": "^0.0.2",
+		"@sveltejs/adapter-auto": "^2.0.0",
+		"@sveltejs/kit": "^1.9.3",
+		"@sveltejs/package": "^2.0.2",
+		"@types/eslint": "^8.21.1",
+		"@types/node": "^18.14.5",
+		"@typescript-eslint/eslint-plugin": "^5.54.0",
+		"@typescript-eslint/parser": "^5.54.0",
+		"eslint": "^8.35.0",
+		"eslint-config-prettier": "^8.6.0",
+		"eslint-import-resolver-typescript": "^3.5.3",
+		"eslint-plugin-import": "^2.27.5",
+		"eslint-plugin-prettier": "^4.2.1",
+		"eslint-plugin-svelte": "^2.19.2",
+		"eslint-plugin-unicorn": "^46.0.0",
+		"lint-staged": "^13.1.2",
+		"prettier": "^2.8.4",
+		"prettier-plugin-svelte": "^2.9.0",
+		"publint": "^0.1.9",
+		"simplebar": "^6.2.1",
+		"simplebar-core": "^1.2.1",
+		"svelte": "^3.55.1",
+		"svelte-check": "^3.0.4",
+		"tslib": "^2.5.0",
+		"typescript": "^4.9.5",
+		"vite": "^4.1.4"
+	},
+	"pnpm": {
+		"patchedDependencies": {
+			"simplebar@6.2.1": "patches/simplebar@6.2.1.patch"
+		}
+	}
 }

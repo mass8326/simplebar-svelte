@@ -15,7 +15,7 @@
 		simplebar = new SimpleBar(element, options);
 		dispatch("mount", { simplebar });
 	});
-	onDestroy(() => simplebar.unMount());
+	onDestroy(() => simplebar?.unMount());
 
 	const style = $$props.style ?? ($$props.class ? undefined : "height:100%");
 </script>

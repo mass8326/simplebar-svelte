@@ -1,5 +1,11 @@
 # @mgnsfr/simplebar-svelte
 
+## 0.1.3
+
+### Patch Changes
+
+- FEAT: Add prop to set class on content container
+
 ## 0.1.2
 
 ### Patch Changes

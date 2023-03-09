@@ -4,11 +4,12 @@
 	import { createEventDispatcher, onDestroy, onMount } from "svelte";
 
 	export let options: SimpleBarOptions = {};
-	let simplebar: SimpleBar;
+	export let contentClass = "";
 
 	// Export for binding but do not require as a prop
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	export let element: HTMLDivElement = undefined as any;
+	let simplebar: SimpleBar;
 
 	const dispatch = createEventDispatcher<{ mount: { simplebar: SimpleBar } }>();
 	onMount(() => {
@@ -28,7 +29,7 @@
 		<div class="simplebar-mask">
 			<div class="simplebar-offset">
 				<div class="simplebar-content-wrapper">
-					<div class="simplebar-content">
+					<div class="simplebar-content {contentClass}">
 						<slot />
 					</div>
 				</div>
